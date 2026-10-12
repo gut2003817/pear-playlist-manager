@@ -1,0 +1,260 @@
+/* ---------- 搜尋結果上的歌單標示 ---------- */
+.pm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 220px;
+  margin: 4px 0 0 8px;
+  padding: 2px 8px 2px 2px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font:
+    500 12px/1.4 'YouTube Sans',
+    Roboto,
+    sans-serif;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: background 0.15s;
+}
+.pm-badge:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+.pm-badge-fuzzy {
+  border-style: dashed;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+}
+.pm-badge-fuzzy .pm-badge-cover {
+  opacity: 0.55;
+}
+.pm-badge-cover {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+  background: #333;
+}
+.pm-badge-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.pm-badge-more {
+  flex: none;
+  color: rgba(255, 255, 255, 0.6);
+}
+ytmusic-responsive-list-item-renderer .title-column {
+  flex-wrap: wrap;
+}
+
+/* ---------- 「播放」「儲存」旁的按鈕 ---------- */
+.pm-card-remove {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: auto;
+  min-width: max-content;
+  box-sizing: border-box;
+  white-space: nowrap;
+  line-height: 1;
+  vertical-align: middle;
+  height: 36px;
+  margin-left: 8px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  background: transparent;
+  color: #fff;
+  font:
+    500 14px 'YouTube Sans',
+    Roboto,
+    sans-serif;
+  cursor: pointer;
+}
+.pm-card-remove:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.pm-card-remove svg,
+.pm-menu-item svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  flex: none;
+}
+
+/* ---------- 三點選單 ---------- */
+.pm-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 48px;
+  padding: 0 16px;
+  color: #fff;
+  font:
+    400 14px Roboto,
+    sans-serif;
+  cursor: pointer;
+}
+.pm-menu-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ---------- 勾選視窗 ---------- */
+.pm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  outline: none;
+}
+.pm-dialog {
+  width: min(440px, calc(100vw - 32px));
+  max-height: 80vh;
+  overflow: auto;
+  padding: 24px;
+  border-radius: 12px;
+  background: #212121;
+  color: #fff;
+  font-family: Roboto, sans-serif;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+.pm-dialog-title {
+  margin: 0 0 4px;
+  font:
+    600 20px 'YouTube Sans',
+    Roboto,
+    sans-serif;
+}
+.pm-dialog-sub {
+  margin: 0 0 16px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+.pm-section {
+  margin: 12px 0 4px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+.pm-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pm-item label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.pm-item label:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+.pm-item input {
+  width: 18px;
+  height: 18px;
+  accent-color: #ff4e45;
+  flex: none;
+}
+.pm-cover {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  object-fit: cover;
+  background: #333;
+  flex: none;
+}
+.pm-info {
+  min-width: 0;
+}
+.pm-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 15px;
+}
+.pm-meta {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+.pm-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+.pm-spacer {
+  flex: 1;
+}
+.pm-btn {
+  height: 36px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  background: transparent;
+  color: #fff;
+  font:
+    500 14px Roboto,
+    sans-serif;
+  cursor: pointer;
+}
+.pm-primary {
+  border-color: transparent;
+  background: #fff;
+  color: #030303;
+}
+.pm-primary:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.pm-link {
+  padding: 0;
+  border: none;
+  background: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---------- 提示訊息 ---------- */
+.pm-toast {
+  position: fixed;
+  left: 24px;
+  bottom: 96px;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 480px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: #fff;
+  color: #030303;
+  font:
+    400 14px Roboto,
+    sans-serif;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.pm-toast-action {
+  flex: none;
+  border: none;
+  background: none;
+  color: #065fd4;
+  font:
+    600 14px Roboto,
+    sans-serif;
+  cursor: pointer;
+}
