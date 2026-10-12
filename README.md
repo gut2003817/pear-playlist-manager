@@ -40,12 +40,18 @@ bash install.sh
 - 使用 YouTube Music 網頁版的非公開內部 API，YouTube 改版時可能失效。
 
 ## 更新
+官方出新版時，App 左下角會提醒你。**請不要直接下載官方版**，那樣會把插件蓋掉。在 repo 資料夾執行：
+
 ```bash
 cd pear-playlist-manager
 git pull
 bash install.sh
 ```
-Pear Desktop 官方出新版時也一樣，重跑 `install.sh` 就會拉最新原始碼並保留插件。
+
+- `git pull`：拿到這個插件的最新版。
+- `install.sh`：下載 Pear Desktop **最新的正式發布版**（不是開發中的版本），放入插件後重新編譯。
+- 登入狀態、設定和已讀取的歌單資料都會保留。
+- 想裝指定版本：`PEAR_VERSION=v3.12.0 bash install.sh`
 
 ## 檔案說明
 | 檔案 | 用途 |
@@ -53,6 +59,7 @@ Pear Desktop 官方出新版時也一樣，重跑 `install.sh` 就會拉最新�
 | `playlist-manager/` | 插件本體，安裝時會複製到 Pear Desktop 的 `src/plugins/` |
 | `install.sh` | 一鍵安裝／更新腳本 |
 | `add-i18n.mjs` | 把插件名稱加進 Pear Desktop 的語系檔 |
+| `playlist-manager/update-check.ts` | 每天檢查一次官方是否有新版，有的話提醒你用 `install.sh` 更新 |
 
 ## 來源與致謝
 - **Pear Desktop**（[pear-devs/pear-desktop](https://github.com/pear-devs/pear-desktop)，前身為 th-ch/youtube-music，MIT 授權）：這個插件使用它的插件框架（`createPlugin`、多語系 `t()`），安裝腳本會在編譯時下載它的原始碼。

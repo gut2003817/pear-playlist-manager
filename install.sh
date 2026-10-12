@@ -26,13 +26,18 @@ if [ "${PNPM_MAJOR:-0}" -lt 11 ]; then
   echo "安裝 pnpm 11…"; npm i -g pnpm@11
 fi
 
-# 2. 原始碼
-say "下載／更新 Pear Desktop 原始碼"
-if [ -d "$REPO/.git" ]; then
-  git -C "$REPO" checkout -- src/i18n/resources >/dev/null 2>&1 || true
-  git -C "$REPO" pull --ff-only
+# 2. 原始碼：只用官方「正式發布」的版本，不用開發中的 main
+#    想指定版本可以這樣執行：PEAR_VERSION=v3.12.0 bash install.sh
+UPSTREAM="https://github.com/pear-devs/pear-desktop.git"
+TAG="${PEAR_VERSION:-$(git ls-remote --tags --refs "$UPSTREAM" \
+  | sed 's#.*refs/tags/##' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)}"
+[ -n "$TAG" ] || { echo "抓不到官方版本號，請檢查網路"; exit 1; }
+say "下載 Pear Desktop 官方正式版 $TAG"
+if [ ! -d "$REPO/.git" ]; then
+  git clone --depth 1 --branch "$TAG" "$UPSTREAM" "$REPO"
 else
-  git clone --depth 1 https://github.com/pear-devs/pear-desktop.git "$REPO"
+  git -C "$REPO" fetch --depth 1 origin "refs/tags/$TAG:refs/tags/$TAG"
+  git -C "$REPO" checkout -f "$TAG"
 fi
 
 # 3. 放入插件
